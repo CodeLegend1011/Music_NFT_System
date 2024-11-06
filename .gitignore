@@ -1,17 +1,3 @@
-// Content from the branch you are rebasing onto
-# Ignore node_modules in the root and inner folders
 node_modules/
-
-# Ignore .env files for environment variables (such as contract addresses)
-.env
-
-# Ignore build directories (React build output)
 build/
 dist/
-
-# Ignore IDE-specific files (for VSCode, WebStorm, etc.)
-.vscode/
-.idea/
-
-# Ignore log files
-*.log

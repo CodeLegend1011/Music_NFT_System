@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
+/* Global Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: #0d0d0d;
+  color: #fff;
+  font-size: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   min-height: 100vh;
+  background-color: #121212;
+}
+
+/* Header Styling */
+.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 30px;
+  color: #1e90ff;
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.tab-container {
+  display: flex;
+  gap: 15px;
+}
+
+.tab-button {
+  background-color: #333;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover,
+.tab-button.active {
+  background-color: #1e90ff;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.search-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.search-bar {
+  padding: 10px;
+  height: 42px;
+  width: 250px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  font-size: 14px;
+  margin:20px;
+}
+
+.search-bar::placeholder {
+  color: #aaa;
+}
+
+.profile-tab {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-tab:hover {
+  background-color: #1e90ff; /* Darker background on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-profile {
+    margin-top: 10px;
+  }
+
+  .tab-container {
+    margin-top: 10px;
   }
 }

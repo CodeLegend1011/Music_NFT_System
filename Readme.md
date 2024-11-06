@@ -1,12 +1,8 @@
-Here's a sample `README.md` file for your Music NFT project. This document is structured to clearly explain the project, its features, and how to set it up, including any requirements for contributors and potential future improvements.
-
----
-
 # Music NFT Marketplace 🎶🎨
 
 Welcome to the **Music NFT Marketplace**, a decentralized platform that allows artists to upload their music as NFTs and buyers to collect and trade unique digital music assets.
 
-![Project Logo](path-to-logo-image) <!-- Replace with your project logo -->
+![Project Logo](https://github.com/user-attachments/assets/011d11eb-ac67-472b-842d-861f19024aed)
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -16,8 +12,7 @@ Welcome to the **Music NFT Marketplace**, a decentralized platform that allows a
 5. [Usage](#usage)
 6. [Smart Contracts](#smart-contracts)
 7. [Screenshots](#screenshots)
-8. [Contributing](#contributing)
-9. [License](#license)
+8. [License](#license)
 
 ---
 
@@ -42,38 +37,10 @@ The **Music NFT Marketplace** is a blockchain-based platform built on Ethereum w
 - **Wallet Integration**: MetaMask
 - **Libraries**: ethers.js, OpenZeppelin Contracts
 
-## Setup and Installation
-
 ### Prerequisites
 - Node.js (latest stable version)
 - MetaMask Wallet extension installed in your browser
 - Ganache (for local Ethereum blockchain testing)
-- Truffle/Hardhat (for deploying smart contracts)
-
-### Installation Steps
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/CodeLegend1011/Music_NFT.git
-   cd Music_NFT
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Configure Environment Variables**:
-   - Create a `.env` file in the root directory.
-   - Add your Infura/Alchemy API key, contract address, and other necessary details.
-
-4. **Start the development server**:
-   ```bash
-   npm start
-   ```
-
-5. **Deploy Smart Contracts**:
-   - Use Remix IDE or Hardhat to deploy your smart contracts to Ethereum.
-   - Make sure to update the contract address in your frontend files.
 
 ## Usage
 
@@ -99,16 +66,20 @@ Contracts are deployed using Remix IDE or Hardhat. Ensure the addresses are upda
 
 ## Screenshots
 
-![Artist Dashboard Screenshot](path-to-artist-dashboard-image)
-![Client Marketplace Screenshot](path-to-marketplace-image)
-![Profile Modal Screenshot](path-to-profile-modal-image)
+# Artist Dashboard Screenshot
+![image](https://github.com/user-attachments/assets/fa424f1f-3261-40b1-8c78-3c62e184f67c)
 
-> **Note**: Add your actual screenshot images in the placeholders.
+# Client Marketplace Screenshot
+
+![image](https://github.com/user-attachments/assets/f0420cf7-48b3-475f-82fe-f7f0faeaee2b)
+
+# Client Collection Screenshot
+
+![image](https://github.com/user-attachments/assets/2f98faf0-c29e-4a66-8276-2360599b12a5)
+
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ---
-
-Feel free to customize this `README.md` to better fit your project. Let me know if you need any further adjustments or additions!

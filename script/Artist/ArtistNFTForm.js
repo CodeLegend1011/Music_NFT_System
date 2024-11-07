@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import MusicNFT from './MNFT.json'; // Adjust the import path if necessary
-import './ArtistApp.css'; // Link to your improved CSS file for styling
+import MusicNFT from './MNFT.json';
+import './ArtistApp.css';
 
 const ArtistNFTForm = () => {
-    const [nftData, setNftData] = useState({ tokenURI: '', royaltyPercentage: '' });
+    const [nftData, setNftData] = useState({ tokenURI: '', royaltyPercentage: '', price: '' });
     const [account, setAccount] = useState('');
     const [contract, setContract] = useState(null);
     const [royaltiesReceived, setRoyaltiesReceived] = useState(0);
@@ -15,18 +15,17 @@ const ArtistNFTForm = () => {
             await window.ethereum.request({ method: 'eth_requestAccounts' });
             const provider = new ethers.BrowserProvider(window.ethereum);
             const signer = await provider.getSigner();
-            const contractAddress = '0x2D6C5fae5C2Ef0Ec953E3BEa032b67DAf80ab5C9'; // Replace with your contract address
+            const contractAddress = '0x79a513570340bb804c74d80A15250FFA89287738';
             const musicNFTContract = new ethers.Contract(contractAddress, MusicNFT.abi, signer);
             setContract(musicNFTContract);
             const accounts = await provider.send("eth_requestAccounts", []);
             setAccount(accounts[0]);
 
-            // Fetch artist's royalties and number of NFTs sold
             try {
                 const royalties = await musicNFTContract.getArtistRoyalties(account);
                 setRoyaltiesReceived(ethers.formatEther(royalties));
 
-                const sold = await musicNFTContract.getNFTsSold(account);
+                const sold = await musicNFTContract.getNFTsSold();
                 setNftsSold(sold.toString());
             } catch (error) {
                 console.error("Error fetching royalties or sold NFTs:", error);
@@ -44,7 +43,11 @@ const ArtistNFTForm = () => {
     const uploadNFT = async (e) => {
         e.preventDefault();
         try {
-            const tx = await contract.uploadMusicNFT(nftData.tokenURI, nftData.royaltyPercentage);
+            const tx = await contract.uploadMusicNFT(
+                nftData.tokenURI,
+                nftData.royaltyPercentage,
+                ethers.parseEther(nftData.price)
+            );
             await tx.wait();
             alert('NFT Uploaded Successfully!');
         } catch (error) {
@@ -81,6 +84,13 @@ const ArtistNFTForm = () => {
                     type="number"
                     name="royaltyPercentage"
                     placeholder="Royalty Percentage"
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="price"
+                    placeholder="Price in ETH"
                     onChange={handleChange}
                     required
                 />

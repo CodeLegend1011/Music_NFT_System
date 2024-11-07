@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import MusicNFT from './MNFT.json';  // Your contract ABI
+import MusicNFT from './MNFT.json';
 import './ClientApp.css';
 
 const ClientApp = () => {
@@ -18,7 +18,7 @@ const ClientApp = () => {
       const accounts = await provider.send("eth_requestAccounts", []);
       setAccount(accounts[0]);
 
-      const contractAddress = '0x2D6C5fae5C2Ef0Ec953E3BEa032b67DAf80ab5C9'; // Replace with your deployed contract address
+      const contractAddress = '0x79a513570340bb804c74d80A15250FFA89287738';
       const musicNFTContract = new ethers.Contract(contractAddress, MusicNFT.abi, signer);
       setContract(musicNFTContract);
 
@@ -36,6 +36,7 @@ const ClientApp = () => {
             description: metadata.description,
             image: metadata.image,
             audio: metadata.audio,
+            price: ethers.formatEther(nft.price.toString()), // Convert to Ether
           });
         }
       }
@@ -62,7 +63,8 @@ const ClientApp = () => {
 
   const buyNFT = async (tokenId) => {
     try {
-      const tx = await contract.purchaseNFT(tokenId, { value: ethers.parseEther("0.1") });
+      const nft = nfts.find((nft) => nft.tokenId === tokenId);
+      const tx = await contract.purchaseNFT(tokenId, { value: ethers.parseEther(nft.price) });
       await tx.wait();
       alert('NFT purchased successfully!');
       const purchasedNft = nfts.find((nft) => nft.tokenId === tokenId);
@@ -78,7 +80,7 @@ const ClientApp = () => {
   return (
     <div className="client-app">
       <h1>Music NFT Marketplace</h1>
-      <h2>Welcome, User</h2>
+      <h2>Welcome, {account}</h2>
 
       <div className="tabs">
         <div
@@ -112,7 +114,8 @@ const ClientApp = () => {
                       Your browser does not support the audio element.
                     </audio>
                   )}
-                  <button onClick={() => buyNFT(nft.tokenId)}>Buy for 0.1 ETH</button>
+                  <p>Price: {nft.price} ETH</p>
+                  <button onClick={() => buyNFT(nft.tokenId)}>Buy for {nft.price} ETH</button>
                 </div>
               </div>
             ))
